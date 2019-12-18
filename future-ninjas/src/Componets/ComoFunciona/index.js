@@ -3,7 +3,7 @@ import axios from 'axios';
 import LogoFutureNinja from '../../Resources/logo.png'
 import LogoFacebook from '../../Resources/facebook.png'
 import LogoTwitter from '../../Resources/twitter.png'
-import LogoEmail from '../../Resources/Email.png'
+import LogoEmail from '../../Resources/logoEmail.png'
 import LogoInstagram from '../../Resources/instagram.png'
 import styled from 'styled-components';
 
