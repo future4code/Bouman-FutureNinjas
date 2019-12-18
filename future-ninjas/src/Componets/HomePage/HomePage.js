@@ -6,15 +6,19 @@ import Footer from './Footer';
 
 
 
+const MainContainer = styled.div`
+    font-family: 'Roboto', sans-serif;
+`
+
 class HomePage extends React.Component {
 
     render() {
         return (
-            <div>
+            <MainContainer>
             <Header />
 
             <Footer />
-            </div>
+            </MainContainer>
         )
     }
 }

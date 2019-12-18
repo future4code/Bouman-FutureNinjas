@@ -66,7 +66,6 @@ const BotaoCadastro = styled.button`
     border-radius: 200px;
     text-align: center;
     text-transform: uppercase;
-    
 `
 
 

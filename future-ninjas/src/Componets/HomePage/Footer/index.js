@@ -64,19 +64,22 @@ const Link = styled.a`
     text-decoration-line: none;
     text-decoration-style: initial;
     text-decoration-color: initial;
+    /* color: #ffffff; */
     
     &:active {
-    color: red;
+        color: red;
     }
 
     &:focus {
-    color: red;
+        color: red;
     }
 
-    &:link{}
+    &:link{
+        color: #ffffff;
+    }
 
-    & a:visited {
-    color: #ffffff;
+    &:visited {
+        color: #ffffff;
     }
 `
 
