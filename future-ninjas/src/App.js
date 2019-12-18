@@ -1,13 +1,16 @@
 import React from 'react';
-import JobsPage from './Components/JobsPage/index'
+import logo from './logo.svg';
+import './App.css';
+import HomePage from './Componets/HomePage/HomePage';
 
 
 function App() {
   return (
-    <div>
-      <JobsPage/>
+    <div className="App">
+      <HomePage />
     </div>
   );
 }
+
 
 export default App;
