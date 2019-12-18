@@ -3,12 +3,14 @@ import axios from 'axios';
 import LogoFutureNinja from '../../Resources/logo.png'
 import LogoFacebook from '../../Resources/facebook.png'
 import LogoTwitter from '../../Resources/twitter.png'
-import LogoEmail from '../../Resources/email.png'
+import LogoEmail from '../../Resources/Email.png'
 import LogoInstagram from '../../Resources/instagram.png'
 import styled from 'styled-components';
 
 const PageContainer= styled.div`
 display: flex;
+font-family: 'Roboto';
+text-align: center;
 `
 const LogoBanner = styled.img`
 width: 400px;

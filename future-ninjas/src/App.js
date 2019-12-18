@@ -1,13 +1,12 @@
 import React from 'react';
+import logo from './logo.svg';
 import './App.css';
-import ComoFunciona from './Componets/ComoFunciona';
-
+import HomePage from './Componets/HomePage/HomePage';
 function App() {
   return (
     <div className="App">
-     <ComoFunciona/> 
+      <HomePage />
     </div>
   );
 }
-
 export default App;
