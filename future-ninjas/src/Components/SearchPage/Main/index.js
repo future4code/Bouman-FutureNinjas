@@ -83,15 +83,19 @@ function Main() {
         <ValueInput id='value' type='number'/>
         <br/>
         <br/>
-        <Label>
+        <Label htmlFor='payment'>
           Meios de Pagamento
         </Label>
         <br/>
-        <input type='checkbox' id='credit-card' value='credit-card'/><Label htmlFor='credit-card'>Cartão de Crédito</Label>
+        {/* <input type='checkbox' id='credit-card' value='credit-card'/><Label htmlFor='credit-card'>Cartão de Crédito</Label>
         <br/>
         <input type='checkbox' id='debit-card' value='debit-card'/><Label htmlFor='debit-card'>Cartão de Débito</Label>
         <br/>
-        <input type='checkbox' id='bank-slip' value='ninja-cash'/><Label htmlFor='ninja-cash'>NinjaCash®</Label>
+        <input type='checkbox' id='bank-slip' value='ninja-cash'/><Label htmlFor='ninja-cash'>NinjaCash®</Label> */}
+        <select id='payment'>
+          <option value='credit-card'>Cartão de Crédito</option>
+          <option value='debit-card'>Cartão de Débito</option>
+        </select>
         <br/>
         <br/>
         <Label htmlFor='deadline'>
