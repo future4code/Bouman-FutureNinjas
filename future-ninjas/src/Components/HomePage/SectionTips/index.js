@@ -5,6 +5,8 @@ import Card from './Card.js'
 const MainContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
+	width: 100%;
+	margin: 0 0 60px 0;
 `
 
 const Title = styled.h1`
@@ -16,6 +18,9 @@ const Title = styled.h1`
 
 const ContainerTips = styled.div`
 	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	
 `
 
 export default class SectionTips extends React.Component{

@@ -17,9 +17,11 @@ const Paragraph = styled.p`
 export default class Card extends React.Component{
     constructor(props){
         super(props)
-		this.state = {title: ''}
-		this.state = {image: ''}
-		this.state = {paragraph: ''}
+		this.state = {
+			title: '',
+			image: '',
+			paragraph: '',
+		}
 	}
 	
 	render(){
