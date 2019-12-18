@@ -1,12 +1,15 @@
 import React from 'react';
-import SearchPage from './Components/SearchPage';
+import logo from './logo.svg';
+import './App.css';
+import HomePage from './Componets/HomePage/HomePage';
 
 function App() {
   return (
-    <div>
-      <SearchPage/>
+    <div className="App">
+      <HomePage />
     </div>
   );
 }
+
 
 export default App;
