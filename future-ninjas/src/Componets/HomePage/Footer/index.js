@@ -3,48 +3,82 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const FooterContainer = styled.div`
-    display: flex;
+    display: grid;
+    grid-template: 1fr/1fr 1fr 1fr 1fr 1fr;
+    /* display: flex; */
     width: 100%;
     height: 312px;
     position: absolute;
     bottom: 0%;
-    background: #606061;
+    background: #606061;    
 `
 
 const InternalLinks = styled.div`
-    position: absolute;
-    left: 24.06%;    
+    grid-column: 2/5;
+    grid-row: 1/1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 `
 
 const FooterTitles = styled.p`
     font-weight: bold;
     font-size: 18px;
     line-height: 25px;
-    text-align: center;
     letter-spacing: 0.25px;
     color: #8E6CD2;
 `
 
 const FollowUs = styled.div`
-    position: absolute;
-    right: 31.09%;
-`
-
-const LinksToPages = styled.div`
+    grid-column: 4/5;
+    grid-row: 1/1;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    list-style-type: none;
-    color: #ffffff;
-    justify-content: center;
-    align-items: center;
+`
 
+const LinksContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    align-items: flex-start;
 `
 
 const Logo = styled.img`
-width: 40px;
-height: 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0 5px;
 `
 
+const LinkAndName = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+const Link = styled.a`
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    
+    &:active {
+    color: red;
+    }
+
+    &:focus {
+    color: red;
+    }
+
+    &:link{}
+
+    & a:visited {
+    color: #ffffff;
+    }
+`
 
 class Footer extends React.Component {
 
@@ -54,36 +88,47 @@ class Footer extends React.Component {
                 <InternalLinks>
                     <FooterTitles>
                         Future Ninjas
-                </FooterTitles>
-                    <LinksToPages>
-                        <li>COMO FUNCIONA</li>
-                        <li>ENCONTRAR PROFISSIONAIS</li>
-                        <li>SEJA UM PROFISSIONAL</li>
-                    </LinksToPages>
-
+                    </FooterTitles>
+                    <LinksContainer>
+                        <p>COMO FUNCIONA</p>
+                        <p>ENCONTRAR PROFISSIONAIS</p>
+                        <p>SEJA UM PROFISSIONAL</p>
+                    </LinksContainer>
                 </InternalLinks>
+
                 <FollowUs>
                     <FooterTitles>
                         Redes Sociais
                     </FooterTitles>
-                    <LinksToPages>
-                        <div>
-                            <Logo src={require('../../../Resources/facebook.png')} />
-                            <span>FACEBOOK</span>
-                        </div>
-                        <div>
-                            <Logo src={require('../../../Resources/instagram.png')} />
-                            <span>INSTAGRAM</span>
-                        </div>
-                        <div>
-                            <Logo src={require('../../../Resources/email.png')} />
-                            <span>E-MAIL</span>
-                        </div>
-                        <div>
-                            <Logo src={require('../../../Resources/twitter.png')} />
-                            <span>TWITTER</span>
-                        </div>
-                    </LinksToPages>
+                    <LinksContainer>
+                        <Link href="https://www.facebook.com/">
+                            <LinkAndName>
+                                <Logo src={require('../../../Resources/facebook.png')} />
+                                <span>FACEBOOK</span>
+                            </LinkAndName>
+                        </Link>
+
+                        <Link href="https://www.instagram.com/">
+                            <LinkAndName>
+                                <Logo src={require('../../../Resources/instagram.png')} />
+                                <span>INSTAGRAM</span>
+                            </LinkAndName>
+                        </Link>
+
+                        <Link href="https://www.gmail.com/">
+                            <LinkAndName>
+                                <Logo src={require('../../../Resources/email.png')} />
+                                <span>E-MAIL</span>
+                            </LinkAndName>
+                        </Link>
+
+                        <Link href="https://www.twitter.com/">
+                            <LinkAndName>
+                                <Logo src={require('../../../Resources/twitter.png')} />
+                                <span>TWITTER</span>
+                            </LinkAndName>
+                        </Link>
+                    </LinksContainer>
 
                 </FollowUs>
 
