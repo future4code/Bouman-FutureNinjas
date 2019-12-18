@@ -17,11 +17,31 @@ const Header = styled.div `
 const ImgLogo = styled.img `
     width: 3em ;
     height: 7vh;
+    @media (min-width: 1600px) {
+        width: 4em ;
+        height: 7vh;
+    }
+    @media (min-width: 2560px) {
+        width: 6em ;
+        height: 7vh;
+    }
 `
 
 const TypeLogo = styled.img `
     width: 6em ;
     height: 7vh;
+    @media (min-width: 1600px) {
+        width: 7em ;
+        height: 7vh;
+    }
+    @media (min-width: 1920px) {
+        width: 8em ;
+        height: 7vh;
+    }
+    @media (min-width: 2560px) {
+        width: 12em ;
+        height: 7vh;
+    }
 `
 
 const ContainerLogo = styled.div `

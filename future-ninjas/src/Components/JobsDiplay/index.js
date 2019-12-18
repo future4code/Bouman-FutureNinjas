@@ -14,19 +14,28 @@ const MainContainer = styled.div `
 const FilterArea = styled.div `
   background-color: #F5F3FB;
   width: 20%;
-  height: 87vh;
+  height: 86.5vh;
   border-radius: 15px;
   margin-right: 1em; 
   display: flex;
   justify-content: initial;
   align-items: center;
   flex-direction: column;
+  @media (min-width: 1600px) {
+    height: 87.4vh;
+  }
+  @media (min-width: 1920px) {
+    height: 88vh;
+  }
+  @media (min-width: 2560px) {
+    height: 88.9vh;
+  }
 `
 
 const JobsArea = styled.div `
   background-color: #F5F3FB;
   width: 80%;
-  height: 82.7vh;
+  height: 82.1vh;
   border-radius: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -35,10 +44,26 @@ const JobsArea = styled.div `
   justify-items: center;
   align-items: center;
   padding: 1em 0.5em;
+  @media (min-width: 1600px) {
+    height: 83.9vh;
+  }
+  @media (min-width: 1920px) {
+    height: 85vh;
+  }
+  @media (min-width: 2560px) {
+    height: 86vh;
+    font-size: 18pt;
+  }
 `
 
 const Title = styled.h4 `
   text-align: center;
+  @media (min-width: 1920px) {
+    font-size: 15pt;
+  }
+  @media (min-width: 2560px) {
+    font-size: 18pt;
+  }
 `
 
 const StyledLabel = styled.label `
@@ -53,6 +78,12 @@ const StyledInput = styled.input `
   width: 100%;
   text-indent: 0.5em;
   margin-bottom: 1em;
+  @media (min-width: 1920px) {
+    font-size: 15pt;
+  }
+  @media (min-width: 2560px) {
+    font-size: 18pt;
+  }
 `
 
 const StyledSelect = styled.select `
@@ -63,12 +94,24 @@ const StyledSelect = styled.select `
   width: 100%;
   text-indent: 0.5em;
   margin-bottom: 1em;
+  @media (min-width: 1920px) {
+    font-size: 15pt;
+  }
+  @media (min-width: 2560px) {
+    font-size: 18pt;
+  }
 `
 
 const ContainerSearch = styled.div `
   display: flex;
   flex-direction: column;
   width: 88%;
+  @media (min-width: 1920px) {
+    font-size: 15pt;
+  }
+  @media (min-width: 2560px) {
+    font-size: 18pt;
+  }
 `
 
 
