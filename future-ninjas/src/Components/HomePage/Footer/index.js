@@ -8,7 +8,6 @@ const FooterContainer = styled.div`
     /* display: flex; */
     width: 100%;
     height: 312px;
-    position: absolute;
     bottom: 0%;
     background: #606061;    
 `
