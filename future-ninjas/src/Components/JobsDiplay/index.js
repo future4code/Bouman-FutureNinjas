@@ -148,48 +148,63 @@ export default class JobsDisplay extends React.Component {
       minValue: '',
       maxValue: '',
       title: '',
-      filteredJobs: []
+      // filteredJobs: [],
     }
   }
 
   changeMinValue = (el) => {
     this.setState({minValue: el.target.value})
-    this.refreshSearch()
+    // this.refreshSearch()
   }
 
   changeMaxValue = el => {
     this.setState({maxValue: el.target.value})
-    this.refreshSearch()
+    // this.refreshSearch()
   }
 
   changeTitle = el => {
     this.setState({title: el.target.value});
-    this.refreshSearch()
+    // this.refreshSearch()
   }
 
-  refreshSearch() {
+  // componentDidUpdate() {
+  // }
 
-    const minValue = this.state.minValue
-    const maxValue = this.state.maxValue ? this.state.maxValue : 10000000
+  // refreshSearch() {
+
+  //   const minValue = this.state.minValue
+  //   const maxValue = this.state.maxValue ? this.state.maxValue : 10000000
   
 
-    const filtered = jobs.filter(function(el) {
-      return el.valor >= minValue &&
-      el.valor <= maxValue
-    })
+  //   const filtered = jobs.filter(function(el) {
+  //     return el.valor >= minValue &&
+  //     el.valor <= maxValue
+  //   })
 
-    this.setState({filteredJobs: filtered}, () => {
-      this.setState({filteredJobs: this.state.filteredJobs})
-    })
-  }
+  //   const jobsToDisplay = filtered.map((job) => {
+  //     return <JobCard title={job.oferta} value={job.valor}/>
+  //   })
 
-  componentDidUpdate() {
-  }
+  //   this.setState({filteredJobs: jobsToDisplay})
+  // }
 
   render() {
-    // const jobsToDisplay = this.state.filteredJobs.map((job) => {
-    //   return <JobCard title={job.oferta} value={job.valor}/>
-    // })
+
+    const minValue = this.state.minValue
+    const maxValue = this.state.maxValue
+
+    const filteredJobs = jobs.filter(function(el) {
+      if (maxValue) {
+        return el.valor >= minValue && el.valor <= maxValue
+      } if (!maxValue) {
+        return el.valor >= minValue
+      }
+    })
+
+    const jobsToDisplay = filteredJobs.map((job) => {
+      return <JobCard title={job.oferta} value={job.valor}/>
+    })
+
     return (
       <MainContainer>
         <FilterArea>
@@ -215,8 +230,8 @@ export default class JobsDisplay extends React.Component {
           </ContainerSearch>
         </FilterArea>
         <JobsArea>
-          {/* {jobsToDisplay} */}
-          <JobCard filter={this.state.filteredJobs}/>
+          {/* {this.state.filteredJobs} */}
+          {jobsToDisplay}
         </JobsArea>
       </MainContainer>
     );

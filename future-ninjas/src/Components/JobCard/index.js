@@ -68,9 +68,6 @@ const AceptButton = styled.button `
 
 
 function JobCard(props) {
-  const jobsToDisplay = props.filter.map(job => {
-    return <ContainerCard><ImgJob src={JobImg}/> <Title>{job.oferta}</Title> <Subtitle>{job.valor}</Subtitle> <AceptButton>CANDIDATAR-SE</AceptButton></ContainerCard>
-  })
   return (
     // <ContainerCard>
     //     <ImgJob src={JobImg}></ImgJob>
@@ -79,7 +76,12 @@ function JobCard(props) {
     //     <AceptButton>CANDIDATAR-SE</AceptButton>
     // </ContainerCard>
     <main>
-        {jobsToDisplay}
+        <ContainerCard>
+            <ImgJob src={JobImg}/>
+            <Title>{props.title}</Title>
+            <Subtitle>{props.value}</Subtitle>
+            <AceptButton>CANDIDATAR-SE</AceptButton>
+        </ContainerCard>
     </main>
   );
 }
