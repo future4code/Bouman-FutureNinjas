@@ -104,7 +104,7 @@ export default class Main extends React.Component{
       description: '',
       value: 0,
       payment:[],
-      date: Date(''),
+      date: new Date(''),
     }
   }
 
@@ -143,9 +143,9 @@ export default class Main extends React.Component{
       this.setState({
         title: "",
         description: "",
-        value: 0,
+        value: "",
         payment: [],
-        date: Date(''),
+        date: new Date(''),
       })
       
 		} catch (err) {

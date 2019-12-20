@@ -198,7 +198,7 @@ export default class JobsDisplay extends React.Component {
   orderJobs = (itemA, itemB) => {
     switch(this.state.order) {
       case 'alfabetica':
-        return itemA.title - itemB.title
+        return (itemA.title > itemB.title) ? 1 : ((itemB.title > itemA.title) ? -1 : 0);
         break;
       case '$Crescente':
         return itemA.value - itemB.value
@@ -218,7 +218,7 @@ export default class JobsDisplay extends React.Component {
   render() {
     const servicosFiltrados = this.filtroServico()
     const servicosOrdenados = servicosFiltrados.sort(this.orderJobs)
-    console.log(this.state.allJobs)
+    console.log(this.state.order, this.state.allJobs)
     return (
       <MainContainer>
         <FilterArea>
