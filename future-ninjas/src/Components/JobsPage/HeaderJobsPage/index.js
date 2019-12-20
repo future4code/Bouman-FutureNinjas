@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import LogoImg from '../../Resources/logomarca.png'
-import LogoType from '../../Resources/logotipo.png'
+import LogoImg from '../../../Resources/logomarca.png'
+import LogoType from '../../../Resources/logotipo.png'
 
 
 
@@ -10,7 +10,7 @@ const Header = styled.div `
     height: 9vh;
     background-color: #F5F3FB;
     display: flex;
-    justify-content: initial;
+    justify-content: space-between;
     align-items: center;
 `
 
@@ -48,18 +48,31 @@ const ContainerLogo = styled.div `
     display: flex;
     align-items: center;
     justify-content: start;
-    margin-left: 3em;
+    margin-left: 4em;
+`
+
+const BotaoCadastro = styled.button`
+    height: 5vh;
+    width: 16.7%;
+    font-weight: bold;
+    color: #F5F3FB;
+    background-color: #8E6CD2;
+    border-radius: 200px;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    margin-right: 5.7em;
 `
 
 
-
-function HeaderJobsPage() {
+function HeaderJobsPage(props) {
   return (
     <Header>
-        <ContainerLogo>
+        <ContainerLogo onClick={() => {props.changeCurrentPage('homePage')}}>
             <ImgLogo src={LogoImg}></ImgLogo>
             <TypeLogo src={LogoType}></TypeLogo>
         </ContainerLogo>
+        <BotaoCadastro onClick={() => {props.changeCurrentPage('searchPage')}}>Criar Serviços</BotaoCadastro>
     </Header>
   );
 }

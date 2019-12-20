@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
+
 const ButtonStyled = styled.button`
 	display: flex;
 	justify-content: center;
@@ -24,26 +26,26 @@ const TextButton = styled.span`
 
 const ImageButton = styled.img`
 	width: 40px;
-	heigth: 40px;
+	height: 40px;
 `
 
 
 
 export default class ButtonHome extends React.Component{
-    
     constructor(props){
         super(props)
 		this.state = {
-			text: '',
-			image: ''
+			text: this.props.text,
+			image: this.props.image,
 		}
-    }
+	}
+	
 
     render() {
         return(
-		<ButtonStyled variant="contained">
-			<TextButton>{this.props.text}</TextButton>
-			<ImageButton src={this.props.image}/> 
+		<ButtonStyled onClick={() => {this.props.function(this.props.page)}} variant="contained">
+			<TextButton>{this.state.text}</TextButton>
+			<ImageButton src={this.state.image}/> 
 		 </ButtonStyled>
         )
     }

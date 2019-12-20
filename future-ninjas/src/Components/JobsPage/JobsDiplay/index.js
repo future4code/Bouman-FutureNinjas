@@ -22,7 +22,7 @@ const FilterArea = styled.div `
   align-items: center;
   flex-direction: column;
   @media (min-width: 1600px) {
-    height: 87.4vh;
+    height: 87.5vh;
   }
   @media (min-width: 1920px) {
     height: 88vh;

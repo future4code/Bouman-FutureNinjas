@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from '../HeaderJobsPage/index'
-import JobsDisplay from '../JobsDiplay/index'
+import Header from './HeaderJobsPage/index'
+import JobsDisplay from './JobsDiplay/index'
 
 
 
-function JobsPage() {
+function JobsPage(props) {
   return (
     <div>
-      <Header/>
+      <Header changeCurrentPage={props.changeCurrentPage}/>
       <JobsDisplay/>
     </div>
   );

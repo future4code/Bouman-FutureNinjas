@@ -58,8 +58,8 @@ export default class Banner extends React.Component{
                 </BannerContainer>
 
                 <ButtonsContainer>
-                    <ButtonHome text="Contrate um profissional" image={require("../../../Resources/contrato-icone.png")}/>
-                    <ButtonHome text="Seja um profissional" image={require("../../../Resources/ninja-icone.png")}/>
+                    <ButtonHome function={this.props.changeCurrentPage} page='searchPage' text="Contrate um profissional" image={require("../../../Resources/contrato-icone.png")}/>
+                    <ButtonHome function={this.props.changeCurrentPage} page='jobsPage' text="Seja um profissional" image={require("../../../Resources/ninja-icone.png")}/>
                 </ButtonsContainer>
             </div>
         )

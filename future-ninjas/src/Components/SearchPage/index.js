@@ -1,16 +1,20 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../HomePage/Header/index';
 import Main from './Main';
 import Footer from './Footer';
 
-function SearchPage() {
+
+
+function SearchPage(props) {
   return (
     <div>
-      <Header/>
+      <Header changeCurrentPage={props.changeCurrentPage}/>
       <Main/>
       <Footer/>
     </div>
   );
 }
   
+
+
 export default SearchPage;

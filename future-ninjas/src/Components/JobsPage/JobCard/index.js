@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import JobImg from '../../Resources/job-offer.png'
+import JobImg from '../../../Resources/job-offer.png'
+
 
 
 const ContainerCard = styled.div `
