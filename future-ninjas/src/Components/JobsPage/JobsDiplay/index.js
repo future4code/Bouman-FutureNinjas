@@ -116,41 +116,110 @@ const ContainerSearch = styled.div `
 
 
 
-function JobsDisplay() {
-  return (
-    <MainContainer>
-      <FilterArea>
-        <Title>FILTROS</Title>
-        <ContainerSearch>
-          <StyledLabel>Valor Mínimo</StyledLabel>
-          <StyledInput placeholder='R$ 00,00'/>
-          <StyledLabel>Valor Máximo</StyledLabel>
-          <StyledInput placeholder='R$ 1.000,00'/>
-          <StyledLabel>Título</StyledLabel>
-          <StyledInput placeholder='Título'/>
-          <StyledLabel>Descrição</StyledLabel>
-          <StyledInput placeholder='Digite a descrição'/>
-          <StyledLabel>Ordenar por:</StyledLabel>
-          <StyledSelect>
-            <option>Selecione</option>
-            <option>Alfabética</option>
-            <option>Preço - Crescente</option>
-            <option>Preço - Decrescente</option>
-            <option>Prazo - Crescente</option>
-            <option>Prazo - Decrescente</option>
-          </StyledSelect>
-        </ContainerSearch>
-      </FilterArea>
-      <JobsArea>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-      </JobsArea>
-    </MainContainer>
-  );
+// Array de Teste
+
+const jobs = [
+  {
+    title: 'Abc',
+    value: 25.75
+  },
+  {
+    title: 'bcd',
+    value: 125
+  },
+  {
+    title: 'BCDE',
+    value: 8000
+  },
+  {
+    title: 'ABCD',
+    value: 1
+  },
+  {
+    title: 'EEE',
+    value: 40000
+  },
+  {
+    title: 'aBCD',
+    value: 12
+  }
+]
+
+
+
+// Mudei para componente de classe porque vai atualizar o estado
+
+class JobsDisplay extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      minValue: '',
+      maxValue: '',
+      title: '',
+    }
+  }
+
+  // Inputs controlados
+  changeMinValue = (el) => {
+    this.setState({minValue: el.target.value})
+  }
+
+  changeMaxValue = el => {
+    this.setState({maxValue: el.target.value})
+  }
+
+  changeTitle = el => {
+    this.setState({title: el.target.value});
+  }
+
+  render() {
+
+    // Atualização a partir dos filtros
+    const minValue = this.state.minValue
+    const maxValue = this.state.maxValue
+
+    const filteredJobs = jobs.filter(function(el) {
+      if (maxValue) {
+        return el.value >= minValue && el.value <= maxValue
+      } if (!maxValue) {
+        return el.value >= minValue
+      }
+    })
+
+    const jobsToDisplay = filteredJobs.map((job) => {
+      return <JobCard title={job.title} value={job.value}/>
+    })
+
+    return (
+      <MainContainer>
+        <FilterArea>
+          <Title>FILTROS</Title>
+          <ContainerSearch>
+            <StyledLabel>Valor Mínimo</StyledLabel>
+            <StyledInput type='number' placeholder='R$ 00,00' onChange={this.changeMinValue} value={this.state.minValue}/>
+            <StyledLabel>Valor Máximo</StyledLabel>
+            <StyledInput type='number' placeholder='R$ 1.000,00' value={this.state.maxValue} onChange={this.changeMaxValue}/>
+            <StyledLabel>Título</StyledLabel>
+            <StyledInput placeholder='Título' value={this.state.title} onChange={this.changeTitle}/>
+            <StyledLabel>Descrição</StyledLabel>
+            <StyledInput placeholder='Digite a descrição'/>
+            <StyledLabel>Ordenar por:</StyledLabel>
+            <StyledSelect>
+              <option>Selecione</option>
+              <option>Alfabética</option>
+              <option>Preço - Crescente</option>
+              <option>Preço - Decrescente</option>
+              <option>Prazo - Crescente</option>
+              <option>Prazo - Decrescente</option>
+            </StyledSelect>
+          </ContainerSearch>
+        </FilterArea>
+        <JobsArea>
+          {jobsToDisplay}
+        </JobsArea>
+      </MainContainer>
+    );
+  }
 }
 
 

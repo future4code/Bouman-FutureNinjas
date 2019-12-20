@@ -68,12 +68,12 @@ const AceptButton = styled.button `
 
 
 
-function JobCard() {
+function JobCard(props) {
   return (
     <ContainerCard>
         <ImgJob src={JobImg}></ImgJob>
-        <Title>Título da Oferta</Title>
-        <Subtitle>Categoria</Subtitle> 
+        <Title>{props.title}</Title>
+        <Subtitle>{props.value}</Subtitle> 
         <AceptButton>CANDIDATAR-SE</AceptButton>
     </ContainerCard>
   );
