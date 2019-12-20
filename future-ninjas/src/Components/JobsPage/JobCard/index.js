@@ -68,17 +68,25 @@ const AceptButton = styled.button `
 
 
 
-function JobCard() {
-  return (
-    <ContainerCard>
-        <ImgJob src={JobImg}></ImgJob>
-        <Title>Título da Oferta</Title>
-        <Subtitle>Categoria</Subtitle> 
-        <AceptButton>CANDIDATAR-SE</AceptButton>
-    </ContainerCard>
-  );
+export default class JobCard extends React.Component {
+
+    constructor(props){
+        super(props)
+		this.state = {
+			title: '',
+			price: '',
+		}
+    }
+
+
+    render(){
+    return (
+        <ContainerCard>
+            <ImgJob src={JobImg}></ImgJob>
+            <Title>{this.props.title}</Title>
+            <Subtitle>R${this.props.price}</Subtitle> 
+            <AceptButton>CANDIDATAR-SE</AceptButton>
+        </ContainerCard>
+    )
 }
-
-
-
-export default JobCard;
+}

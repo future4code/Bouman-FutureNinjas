@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import JobCard from '../JobCard/index'
+import JobCard from '../JobCard/index';
+import axios from 'axios';
 
 
 
@@ -35,7 +36,6 @@ const FilterArea = styled.div `
 const JobsArea = styled.div `
   background-color: #F5F3FB;
   width: 80%;
-  height: 82.1vh;
   border-radius: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -116,7 +116,31 @@ const ContainerSearch = styled.div `
 
 
 
-function JobsDisplay() {
+export default class JobsDisplay extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+        allJobs: [],
+    }
+  }
+
+  componentDidMount() {
+      this.getAllJobs()
+  }
+
+  getAllJobs = async () => {
+      axios.get(`https://us-central1-future-apis.cloudfunctions.net/futureNinjas/jobs`).then(res => {
+          const allJobs = res.data.jobs
+          this.setState({ allJobs })
+      })
+  }
+
+  componentDidUpdate(){
+      console.log(this.state.allJobs)
+  }
+
+  render(){
   return (
     <MainContainer>
       <FilterArea>
@@ -142,18 +166,9 @@ function JobsDisplay() {
         </ContainerSearch>
       </FilterArea>
       <JobsArea>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
+        {this.state.allJobs.map(job => <JobCard title={job.title} price={job.value}/>)}
       </JobsArea>
     </MainContainer>
   );
 }
-
-
-
-
-export default JobsDisplay;
+}

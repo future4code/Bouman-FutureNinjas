@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 
 
@@ -94,7 +95,66 @@ const SearchButton = styled.button`
 
 
 
-function Main() {
+export default class Main extends React.Component{
+
+  constructor(props){
+    super(props)
+    this.state = {
+      title: '',
+      description: '',
+      value: 0,
+      payment:[],
+      date: Date(''),
+    }
+  }
+
+  handleChangeTitle = event => {
+    this.setState({ title: event.target.value })
+  }
+
+  handleChangeDescription = event => {
+    this.setState({ description: event.target.value })
+  }
+
+  handleChangeValue = event => {
+    this.setState({ value: event.target.value })
+  }
+
+  handleChangePayment = event => {
+    this.setState({ payment: event.target.value })
+  }
+
+  handleChangeDate = event => {
+    this.setState({ date: event.target.value })
+  }
+
+  handleSubmit = async () => {
+
+    try {
+			const data = {
+				title: this.state.title,
+				description: this.state.description,
+				value: this.state.value,
+				paymentMethods: [this.state.payment],
+				dueDate: new Date(this.state.date),
+			}
+			console.log(data)
+
+      await axios.post('https://us-central1-future-apis.cloudfunctions.net/futureNinjas/jobs', data)
+      this.setState({
+        title: '',
+        description: '',
+        value: '',
+        payment: '',
+        date: '',
+      })
+      
+		} catch (err) {
+			console.log(`Verifique todos os campos. Erro: ${err.message}`)
+		}
+  }
+
+  render(){
   return (
     <MainSection>
       <Heading>
@@ -103,29 +163,28 @@ function Main() {
       <Container>
         <SearchForm>
           <Label htmlFor='title'>Título</Label>
-          <StyledInput id='title' type='text' placeholder='Título do anúncio'/>
+          <StyledInput id='title' type='text' placeholder='Título do anúncio' onChange={this.handleChangeTitle} />
           <Label htmlFor='description'>Descrição</Label>
-          <StyledTextarea id='description' type='text' placeholder='Um pequeno texto que descreva sua necessidade'/>
+          <StyledTextarea id='description' type='text' placeholder='Um pequeno texto que descreva sua necessidade' onChange={this.handleChangeDescription}/>
           <Label htmlFor='value'>Valor da Remuneração</Label>
-          <StyledInput id='value' type='number' placeholder='R$200,00'/>
+          <StyledInput id='value' type='number' placeholder='R$200,00' onChange={this.handleChangeValue}/>
           <Label htmlFor='payment'>Meios de Pagamento</Label>
-          <StyledSelect id='payment'>
-            <option>Selecione</option>
+          <StyledSelect id='payment' onChange={this.handleChangePayment}>
+            <option value=''>Selecione</option>
             <option value='credit-card'>Cartão de Crédito</option>
             <option value='debit-card'>Cartão de Débito</option>
           </StyledSelect>
           <Label htmlFor='deadline'>Prazo</Label>
-          <StyledInput id='deadline' type='text' placeholder='30 dias, 60 dias, etc'/>
-          <SearchButton>Concluir</SearchButton>
+          <StyledInput id='deadline' type='date' onChange={this.handleChangeDate}/>
+          <SearchButton onClick={this.handleSubmit}>Concluir</SearchButton>
         </SearchForm>
         <NinjaImage>
           <img src={require('../../../Resources/icone-ninja.png')}/>
         </NinjaImage>
       </Container>
     </MainSection>
-  );
+  )}
 }
 
 
 
-export default Main;
