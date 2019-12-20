@@ -20,7 +20,7 @@ const FilterArea = styled.div`
   margin-right: 1em; 
   display: flex;
   justify-content: initial;
-  align-precos: center;
+  align-items: center;
   flex-direction: column;
   @media (min-width: 1600px) {
     height: 87.5vh;
@@ -41,8 +41,8 @@ const JobsArea = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-gap: 1em;
-  justify-precos: center;
-  align-precos: center;
+  justify-items: center;
+  align-items: center;
   padding: 1em 0.5em;
   @media (min-width: 1600px) {
     height: 83.9vh;
@@ -126,6 +126,7 @@ export default class JobsDisplay extends React.Component {
       title: '',
       description: '',
       allJobs: [],
+      order: '',
     }
   }
 
@@ -160,9 +161,6 @@ export default class JobsDisplay extends React.Component {
     })
   }
 
-  componentDidUpdate() {
-    // console.log(this.state.allJobs)
-  }
 
   filtroServico = () => {
     return this.state.allJobs.filter((preco) => {
@@ -192,19 +190,35 @@ export default class JobsDisplay extends React.Component {
     })
   }
 
-  ordenaProdutosDaLista = (itemA, itemB) => {
-    if (this.state.ordem === 'crescente') {
-      return itemA.valor - itemB.valor
-    } else if (this.state.ordem === 'decrescente') {
-      return itemB.valor - itemA.valor
+  changeSelectorOrder = (el) => {
+    const orderType = el.target.value
+    this.setState({order: orderType,})
+  }
+
+  orderJobs = (itemA, itemB) => {
+    switch(this.state.order) {
+      case 'alfabetica':
+        return itemA.title - itemB.title
+        break;
+      case '$Crescente':
+        return itemA.value - itemB.value
+        break;
+      case '$Decrescente':
+        return itemB.value - itemA.value
+        break;
+      case 'pzCrescente':
+        return itemA.dueDate - itemB.dueDate
+        break;
+      case 'pzDecrescente':
+        return itemB.dueDate - itemA.dueDate
+        break;
     }
   }
 
   render() {
-
     const servicosFiltrados = this.filtroServico()
-    console.log(servicosFiltrados)
-
+    const servicosOrdenados = servicosFiltrados.sort(this.orderJobs)
+    console.log(this.state.allJobs)
     return (
       <MainContainer>
         <FilterArea>
@@ -219,18 +233,18 @@ export default class JobsDisplay extends React.Component {
             <StyledLabel>Descrição</StyledLabel>
             <StyledInput placeholder='Digite a descrição' value={this.state.description} onChange={this.changeDescription} />
             <StyledLabel>Ordenar por:</StyledLabel>
-            <StyledSelect>
+            <StyledSelect onChange={this.changeSelectorOrder}>
               <option>Selecione</option>
-              <option>Alfabética</option>
-              <option>Preço - Crescente</option>
-              <option>Preço - Decrescente</option>
-              <option>Prazo - Crescente</option>
-              <option>Prazo - Decrescente</option>
+              <option value='alfabetica'>Alfabética</option>
+              <option value='$Crescente'>Preço - Crescente</option>
+              <option value='$Decrescente'>Preço - Decrescente</option>
+              <option value='pzCrescente'>Prazo - Crescente</option>
+              <option value='pzDecrescente'>Prazo - Decrescente</option>
             </StyledSelect>
           </ContainerSearch>
         </FilterArea>
         <JobsArea>
-          {servicosFiltrados.map(job => <JobCard title={job.title} price={job.value} />)}
+          {servicosOrdenados.map(job => <JobCard title={job.title} price={job.value} />)}
         </JobsArea>
       </MainContainer>
     );

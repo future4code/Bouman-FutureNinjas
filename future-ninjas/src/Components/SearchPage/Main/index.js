@@ -138,15 +138,14 @@ export default class Main extends React.Component{
 				paymentMethods: [this.state.payment],
 				dueDate: new Date(this.state.date),
 			}
-			console.log(data)
 
       await axios.post('https://us-central1-future-apis.cloudfunctions.net/futureNinjas/jobs', data)
       this.setState({
-        title: '',
-        description: '',
-        value: '',
-        payment: '',
-        date: '',
+        title: "",
+        description: "",
+        value: 0,
+        payment: [],
+        date: Date(''),
       })
       
 		} catch (err) {
